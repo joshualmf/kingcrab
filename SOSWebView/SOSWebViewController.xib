@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SOSWebViewController">
             <connections>
+                <outlet property="bottomView" destination="jTb-rO-E9m" id="6ml-34-93O"/>
+                <outlet property="buttonRight" destination="qvf-A9-Zh6" id="M4y-KU-SBW"/>
+                <outlet property="labelTitle" destination="tdf-Rl-N5f" id="Bjo-aL-mea"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="webView" destination="B4Q-us-8Eg" id="jXt-VK-ssS"/>
             </connections>
@@ -16,30 +19,53 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hlm-dW-xue">
+                    <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="KcU-w9-cFs"/>
+                    </constraints>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oNM-Q9-OFa">
+                    <rect key="frame" x="0.0" y="20" width="58" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="58" id="B49-pL-GvN"/>
+                        <constraint firstAttribute="height" constant="44" id="rDy-b5-2kx"/>
+                    </constraints>
+                    <inset key="contentEdgeInsets" minX="20" minY="12" maxX="20" maxY="12"/>
+                    <state key="normal" image="Navigate_Back"/>
+                    <state key="selected" image="Navigate_Back_Click"/>
+                    <connections>
+                        <action selector="bacKButtonTapped:" destination="-1" eventType="touchUpInside" id="FA3-lg-7uO"/>
+                    </connections>
+                </button>
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qvf-A9-Zh6">
+                    <rect key="frame" x="522" y="27" width="68" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="68" id="bWk-fj-Ebu"/>
+                        <constraint firstAttribute="height" constant="30" id="knF-Dj-cUf"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <state key="normal" title="反馈"/>
+                    <state key="selected" image="Navigate_Back_Click"/>
+                    <connections>
+                        <action selector="buttonRightTapped:" destination="-1" eventType="touchUpInside" id="S5s-PI-b9g"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tdf-Rl-N5f">
+                    <rect key="frame" x="48" y="42" width="504" height="0.0"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
                 <webView contentMode="scaleToFill" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="B4Q-us-8Eg">
                     <rect key="frame" x="0.0" y="64" width="600" height="481"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </webView>
-                <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hrq-vj-VwJ">
-                    <rect key="frame" x="0.0" y="20" width="600" height="44"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="44" id="uuG-hD-2CT"/>
-                    </constraints>
-                    <items>
-                        <navigationItem title="title" id="y2Q-LU-ARr">
-                            <barButtonItem key="leftBarButtonItem" image="button_back.png" id="biP-bI-t7i">
-                                <connections>
-                                    <action selector="systemGoBack:" destination="-1" id="yoG-lz-VsB"/>
-                                </connections>
-                            </barButtonItem>
-                        </navigationItem>
-                    </items>
-                </navigationBar>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jTb-rO-E9m">
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jTb-rO-E9m">
                     <rect key="frame" x="0.0" y="546" width="600" height="54"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H6Z-6G-XXN">
-                            <rect key="frame" x="44" y="12" width="46" height="30"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H6Z-6G-XXN">
+                            <rect key="frame" x="44" y="12" width="34" height="30"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="InI-Vy-ik1"/>
                             </constraints>
@@ -48,15 +74,15 @@
                                 <action selector="webViewGoBack:" destination="-1" eventType="touchUpInside" id="Lxe-UQ-aQE"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YQo-Hq-CZt">
-                            <rect key="frame" x="281" y="12" width="69" height="30"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YQo-Hq-CZt">
+                            <rect key="frame" x="275" y="12" width="49" height="30"/>
                             <state key="normal" title="refresh"/>
                             <connections>
                                 <action selector="webViewRefresh:" destination="-1" eventType="touchUpInside" id="j9D-sc-c6W"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a2k-3c-Bxe">
-                            <rect key="frame" x="508" y="12" width="62" height="30"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a2k-3c-Bxe">
+                            <rect key="frame" x="517" y="12" width="53" height="30"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="dg1-Tg-3P5"/>
                             </constraints>
@@ -80,22 +106,46 @@
                     </constraints>
                 </view>
             </subviews>
-            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="Hrq-vj-VwJ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="0af-WH-AKC"/>
+                <constraint firstItem="tdf-Rl-N5f" firstAttribute="leading" secondItem="oNM-Q9-OFa" secondAttribute="trailing" constant="-20" id="430-BA-oji"/>
+                <constraint firstItem="tdf-Rl-N5f" firstAttribute="leading" secondItem="oNM-Q9-OFa" secondAttribute="trailing" constant="20" id="51G-sZ-uCb"/>
                 <constraint firstItem="jTb-rO-E9m" firstAttribute="top" secondItem="B4Q-us-8Eg" secondAttribute="bottom" constant="1" id="5RD-YK-nmk"/>
+                <constraint firstItem="oNM-Q9-OFa" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="812-Hb-Hwt"/>
                 <constraint firstAttribute="trailing" secondItem="B4Q-us-8Eg" secondAttribute="trailing" id="8Uc-bP-bRU"/>
-                <constraint firstItem="B4Q-us-8Eg" firstAttribute="top" secondItem="Hrq-vj-VwJ" secondAttribute="bottom" id="8gg-Y3-lP4"/>
                 <constraint firstItem="jTb-rO-E9m" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Dqq-aF-IJJ"/>
-                <constraint firstItem="Hrq-vj-VwJ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="IgK-WS-6WA"/>
                 <constraint firstAttribute="trailing" secondItem="jTb-rO-E9m" secondAttribute="trailing" id="IrZ-4l-QBK"/>
-                <constraint firstAttribute="trailing" secondItem="Hrq-vj-VwJ" secondAttribute="trailing" id="RMj-V6-f78"/>
+                <constraint firstItem="tdf-Rl-N5f" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="JmM-17-Gbg"/>
+                <constraint firstAttribute="trailing" secondItem="hlm-dW-xue" secondAttribute="trailing" id="S9N-tM-JV1"/>
+                <constraint firstItem="tdf-Rl-N5f" firstAttribute="centerY" secondItem="hlm-dW-xue" secondAttribute="centerY" id="YUv-Lp-et2"/>
                 <constraint firstAttribute="bottom" secondItem="jTb-rO-E9m" secondAttribute="bottom" id="aVg-Ub-Hyb"/>
+                <constraint firstItem="tdf-Rl-N5f" firstAttribute="leading" secondItem="hlm-dW-xue" secondAttribute="leading" constant="48" id="eBI-Em-0tC"/>
+                <constraint firstAttribute="trailing" secondItem="qvf-A9-Zh6" secondAttribute="trailing" constant="10" id="eIV-re-2V7"/>
+                <constraint firstItem="B4Q-us-8Eg" firstAttribute="top" secondItem="hlm-dW-xue" secondAttribute="bottom" id="eru-FE-1cC"/>
                 <constraint firstItem="B4Q-us-8Eg" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="fYD-Ps-DDd"/>
+                <constraint firstItem="qvf-A9-Zh6" firstAttribute="top" secondItem="hlm-dW-xue" secondAttribute="top" constant="3" id="gZ7-mi-Szl"/>
+                <constraint firstItem="hlm-dW-xue" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="gbL-n1-2jg"/>
+                <constraint firstItem="oNM-Q9-OFa" firstAttribute="centerY" secondItem="hlm-dW-xue" secondAttribute="centerY" id="lZo-LZ-oXA"/>
+                <constraint firstItem="tdf-Rl-N5f" firstAttribute="centerY" secondItem="oNM-Q9-OFa" secondAttribute="centerY" id="mZ6-48-bQe"/>
+                <constraint firstItem="qvf-A9-Zh6" firstAttribute="centerY" secondItem="hlm-dW-xue" secondAttribute="centerY" id="rZq-eM-0ck"/>
+                <constraint firstItem="tdf-Rl-N5f" firstAttribute="leading" secondItem="oNM-Q9-OFa" secondAttribute="trailing" constant="20" id="uH7-cy-zg7"/>
+                <constraint firstItem="tdf-Rl-N5f" firstAttribute="trailing" secondItem="hlm-dW-xue" secondAttribute="trailing" constant="-48" id="v0F-PR-cX5"/>
+                <constraint firstItem="hlm-dW-xue" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="yun-9h-CJQ"/>
             </constraints>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="430-BA-oji"/>
+                    <exclude reference="51G-sZ-uCb"/>
+                    <exclude reference="JmM-17-Gbg"/>
+                    <exclude reference="YUv-Lp-et2"/>
+                    <exclude reference="uH7-cy-zg7"/>
+                    <exclude reference="gZ7-mi-Szl"/>
+                </mask>
+            </variation>
         </view>
     </objects>
     <resources>
-        <image name="button_back.png" width="20" height="21"/>
+        <image name="Navigate_Back" width="12" height="21"/>
+        <image name="Navigate_Back_Click" width="12" height="21"/>
     </resources>
 </document>
