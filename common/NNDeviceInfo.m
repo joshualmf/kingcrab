@@ -50,5 +50,62 @@
     freeifaddrs(interfaces);
     return address;
 }
+static IMP __oldDictionaryInitWithObjectAndKeysCountSafeIMP = NULL;
+
+static IMP __oldArrayInitWithObjectsCountSafeIMP = NULL;
+
+static id __DictionaryInitWithObjectAndKeysCountSafeIMP(id obj, SEL sel, const __unsafe_unretained id *objects, const __unsafe_unretained id *keys, NSUInteger count)
+{
+    CFMutableDictionaryRef dict = CFDictionaryCreateMutable(NULL, count, &kCFTypeDictionaryKeyCallBacks, &kCFTypeDictionaryValueCallBacks);
+    
+    for (NSInteger iLooper = 0; iLooper < count; ++iLooper)
+    {
+        id value = objects[iLooper];
+        id key = keys[iLooper];
+        if (value && key)
+        {
+            CFDictionarySetValue(dict, (__bridge const void *)(key), (__bridge const void *)(value));
+        }
+    }
+    
+    return (__bridge id)(dict);
+}
+
+static id __ArrayInitWithObjectsCountSafeIMP(id obj, SEL sel, const __unsafe_unretained id *objects, NSUInteger count)
+{
+    CFMutableArrayRef array = CFArrayCreateMutable(NULL, count, &kCFTypeArrayCallBacks);
+    //CFMutableDictionaryRef dict = CFDictionaryCreateMutable(NULL, count, &kCFTypeDictionaryKeyCallBacks, &kCFTypeDictionaryValueCallBacks);
+    
+    for (NSInteger iLooper = 0; iLooper < count; ++iLooper)
+    {
+        id value = objects[iLooper];
+        //id key = keys[iLooper];
+        if (value)
+        {
+            CFArrayAppendValue(array, (__bridge const void *)value);
+            //CFDictionarySetValue(dict, (__bridge const void *)(key), (__bridge const void *)(value));
+        }
+    }
+    
+    return (__bridge id)(array);
+}
+
+@implementation CMBUtil
+
+static Class kCMBUtilStringClass = Nil;
+static Class kCMBUtilNumberClass = Nil;
+
++ (void)load
+{
+    Method method = class_getInstanceMethod(objc_getClass("__NSPlaceholderDictionary"), @selector(initWithObjects:forKeys:count:));
+    __oldDictionaryInitWithObjectAndKeysCountSafeIMP = method_setImplementation(method, (IMP)__DictionaryInitWithObjectAndKeysCountSafeIMP);
+    
+    
+    Method methodArray = class_getInstanceMethod(objc_getClass("__NSPlaceholderArray"), @selector(initWithObjects:count:));
+    __oldArrayInitWithObjectsCountSafeIMP = method_setImplementation(methodArray, (IMP)__ArrayInitWithObjectsCountSafeIMP);
+
+    kCMBUtilStringClass = [NSString class];
+    kCMBUtilNumberClass = [NSNumber class];
+}
 
 @end
