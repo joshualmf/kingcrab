@@ -135,9 +135,22 @@
 
 
 #pragma mark - scrollview scroll delegate
+
+// called when scroll view grinds to a halt
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    NSInteger index = ceil(_contentView.contentOffset.x / SCREEN_WIDTH);
+    [self switchToIndex:index];
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    if (scrollView.decelerating) {
+        return;
+    }
+}
+
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
 {
-    NSInteger index = _contentView.contentOffset.x / SCREEN_WIDTH;
-    [self switchToIndex:index];
 }
 @end
