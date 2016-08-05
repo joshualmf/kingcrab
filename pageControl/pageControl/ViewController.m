@@ -33,8 +33,9 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    JNTabScrollView *view = [[JNTabScrollView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 480)];
+    JNTabScrollView *view = [[JNTabScrollView alloc] initWithFrame:CGRectMake(0, 20, SCREEN_WIDTH, 600)];
     view.dataSource = self;
+    view.underLineColor = [UIColor colorWithRed:0.92 green:0.07 blue:0.07 alpha:1.0];
     [self.view addSubview:view];
 }
 

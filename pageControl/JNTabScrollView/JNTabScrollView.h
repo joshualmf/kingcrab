@@ -24,4 +24,10 @@
 
 @property (nonatomic, weak) id<JNTabScrollViewDelegate> delegate;
 @property (nonatomic, weak) id<JNTabScrollViewDataSource> dataSource;
+
+@property (nonatomic, strong) UIColor *fontColor;
+@property (nonatomic, strong) UIColor *underLineColor;
+@property (nonatomic, strong) UIColor *tabBackgroundColor;
+
+@property (nonatomic, assign) CGFloat tabHeight;
 @end
