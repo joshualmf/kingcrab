@@ -1,0 +1,12 @@
+ealthKit
+
+(1) 开发者账号修改AppID，支持HealthKit.
+(2) Re-generate provision files.
+    否则报错     containerAppExtensionEntitlementsWithCompletion: failed with error: Error Domain=com.apple.healthkit Code=4 "Missing com.apple.developer.healthkit entitlement." UserInfo={NSLocalizedDescription=Missing com.apple.developer.healthkit entitlement.}
+
+(3) 修改工程Capabilities，打开HealthKit.
+(4) 设置"Privacy - Health Share Usage Description"， 否则闪退。
+    "Privacy - Health Update Usage Description" 这个是更新步数的。
+    containerAppExtensionEntitlementsWithCompletion: failed with error: Error Domain=com.apple.healthkit Code=4 "Missing com.apple.developer.healthkit entitlement." UserInfo={NSLocalizedDescription=Missing com.apple.developer.healthkit entitlement.}
+
+(5) import HealthKit.framework
