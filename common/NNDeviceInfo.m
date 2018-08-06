@@ -2,7 +2,7 @@
 //  NNDeviceInfo.m
 //  skeleton
 //
-//  Created by cmblife on 16/5/31.
+//  Created by crablife on 16/5/31.
 //  Copyright © 2016年 Mac001. All rights reserved.
 //
 

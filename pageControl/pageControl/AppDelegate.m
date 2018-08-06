@@ -2,7 +2,7 @@
 //  AppDelegate.m
 //  pageControl
 //
-//  Created by cmblife on 16/8/4.
+//  Created by crablife on 16/8/4.
 //  Copyright © 2016年 Apple Inc. All rights reserved.
 //
 
